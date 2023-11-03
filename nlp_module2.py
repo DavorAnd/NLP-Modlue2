@@ -19,7 +19,7 @@ import streamlit as st
 from sklearn.metrics import classification_report, accuracy_score
 
 # Load the SpaCy model
-nlp = spacy.load("en_core_web_md")
+nlp = spacy.load("en_core_web_sm")
 
 # Define the text preprocessing function using SpaCy
 @st.cache(allow_output_mutation=True)
