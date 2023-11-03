@@ -16,6 +16,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import spacy
 from sklearn.linear_model import LogisticRegression
 import streamlit as st
+from sklearn.metrics import classification_report, accuracy_score
 
 # Load the SpaCy model
 nlp = spacy.load("en_core_web_md")
@@ -49,7 +50,7 @@ y_train = df_train['title']
 y_test = df_test['title']
 y_validation = df_validation['title']
 
-from sklearn.linear_model import LogisticRegression
+
 
 # Initialize the Logistic Regression model
 logistic_model = LogisticRegression(max_iter=1000)  # Increase max_iter if the model doesn't converge
@@ -57,14 +58,14 @@ logistic_model = LogisticRegression(max_iter=1000)  # Increase max_iter if the m
 # Train the model with your training data
 logistic_model.fit(X_train_tfidf, y_train)
 
-from sklearn.metrics import classification_report, accuracy_score
 
-# Predict the labels for the validation set
-y_validation_pred = logistic_model.predict(X_validation_tfidf)
 
-# Evaluate the model performance
-print("Accuracy on the validation set: ", accuracy_score(y_validation, y_validation_pred))
-print(classification_report(y_validation, y_validation_pred))
+# # Predict the labels for the validation set
+# y_validation_pred = logistic_model.predict(X_validation_tfidf)
+
+# # Evaluate the model performance
+# print("Accuracy on the validation set: ", accuracy_score(y_validation, y_validation_pred))
+# print(classification_report(y_validation, y_validation_pred))
 
 @st.cache
 def predict_profession(bio_text):
